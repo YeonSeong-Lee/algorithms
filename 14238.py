@@ -6,61 +6,51 @@ def A_possible():
     return True
 
 
-def B_possible(record):
-    if len(record) < 1:
-        return True
-    if record[-1] == 'B':
+def B_possible(prev):
+    if prev == 'B':
         return False
     return True
 
 
-def C_possible(record):
-    if len(record) < 2:
-        return True
-    if record[-1] == 'C' or record[-2] == 'C':
+def C_possible(prev, pprev):
+    if prev == 'C' or pprev == 'C':
         return False
     return True
 
 
-def generate_attendance_record(A, B, C, record, dp):
+def generate_attendance_record(A, B, C, prev, pprev):
     if A == 0 and B == 0 and C == 0:
-        return ''.join(record)
+        return ''
 
     if dp[A][B][C] != '':
         return dp[A][B][C]
 
+    result = ''
     if A > 0 and A_possible():
-        record.append('A')
-        result = generate_attendance_record(A-1, B, C, record, dp)
+        result = generate_attendance_record(A-1, B, C, 'A', prev)
         if result != -1:
-            dp[A][B][C] = result
-            return result
-        record.pop()
+            dp[A][B][C] = 'A' + result
+            return dp[A][B][C]
 
-    if B > 0 and B_possible(record):
-        record.append('B')
-        result = generate_attendance_record(A, B-1, C, record, dp)
+    if B > 0 and B_possible(prev):
+        result = generate_attendance_record(A, B-1, C, 'B', prev)
         if result != -1:
-            dp[A][B][C] = result
-            return result
-        record.pop()
+            dp[A][B][C] = 'B' + result
+            return dp[A][B][C]
 
-    if C > 0 and C_possible(record):
-        record.append('C')
-        result = generate_attendance_record(A, B, C-1, record, dp)
+    if C > 0 and C_possible(prev, pprev):
+        result = generate_attendance_record(A, B, C-1, 'C', prev)
         if result != -1:
-            dp[A][B][C] = result
-            return result
-        record.pop()
-
+            dp[A][B][C] = 'C' + result
+            return dp[A][B][C]
     return -1
 
 
-employees = list(input().strip())
+employees = input().strip()
 A, B, C = employees.count('A'), employees.count('B'), employees.count('C')
 
 # DP 테이블 초기화
 dp = [[[''] * (C+1) for _ in range(B+1)] for _ in range(A+1)]
 
-attendance_record = generate_attendance_record(A, B, C, [], dp)
+attendance_record = generate_attendance_record(A, B, C, '', '')
 print(attendance_record)
