@@ -1,0 +1,19 @@
+# cpp gitignore file
+
+# Compiled source #
+build/*
+!build/*.gitignore
+*.exe
+*.out
+*.app
+*.so
+*.dylib
+*.obj
+*.ilk
+*.lib
+*.pdb
+*.db
+*.sqlite
+*.gp
+*.gpi
+*.gpb
