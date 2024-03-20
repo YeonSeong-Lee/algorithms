@@ -22,7 +22,6 @@ int main() {
             if (arr[j] == 'X') {
                 tempSum = 0;
             }
-            cout << "tempSum " << tempSum << "\n";
         }
         cout << total << "\n";
     }
