@@ -23,10 +23,12 @@ int main() {
         }
     }
     if (isAscending == true) {
-        return "ascending";
+        cout << "ascending";
+        return 0;
     }
     if (isDecending == true) {
-        return "descending"
+        cout << "descending";
+        return 0;
     }
-    return "mixed"
+    cout << "mixed";
 }
