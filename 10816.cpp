@@ -3,6 +3,8 @@
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     int N, M;
     int temp;
     unordered_map<int, int> cards;
@@ -10,19 +12,12 @@ int main() {
     cin >> N;
     for (int i = 0; i < N; i++) {
         cin >> temp;
-        if (cards.find(temp) != std::end(cards)) {
-            cards[temp] = cards[temp] + 1;
-        }
-        cards.insert({temp, 1});
+        cards[temp] = cards[temp] + 1;
     }
     cin >> M;
     for (int i = 0; i < M; i++) {
         cin >> temp;
-        if (cards.find(temp) != std::end(cards)) {
-            cout << cards[temp] << " ";
-        } else {
-            cout << 0 << " ";
-        }
+        cout << cards[temp] << " ";
     }
     return 0;
 }
