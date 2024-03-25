@@ -62,6 +62,14 @@
     "*.tcc": "cpp",
     "string": "cpp",
     "array": "cpp",
-    "any": "cpp"
+    "any": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp",
+    "forward_list": "cpp",
+    "initializer_list": "cpp",
+    "valarray": "cpp"
   }
 }
