@@ -4,7 +4,7 @@
   "C_Cpp_Runner.debuggerPath": "gdb",
   "C_Cpp_Runner.cStandard": "",
   "C_Cpp_Runner.cppStandard": "",
-  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.useMsvc": false,
   "C_Cpp_Runner.warnings": [
     "-Wall",
@@ -71,5 +71,12 @@
     "forward_list": "cpp",
     "initializer_list": "cpp",
     "valarray": "cpp"
-  }
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.chat.terminalChatLocation": "chatView",
+  "github.copilot.chat.welcomeMessage": "never",
+  "editor.formatOnSave": true,
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
 }
