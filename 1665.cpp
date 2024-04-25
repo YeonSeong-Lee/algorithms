@@ -12,7 +12,7 @@ int main()
     vector<int> v;
 
     cin >> K >> N;
-    int max = 0;
+    unsigned int max = 0;
     while (K--)
     {
         int temp;
@@ -23,25 +23,30 @@ int main()
             max = temp;
         }
     }
-    int start = 1;
-    int end = max;
-    int mid = (start + end) / 2;
-    while (start < mid)
+    unsigned int start = 1;
+    unsigned int end = max;
+    unsigned int mid = (start + end) / 2;
+    unsigned int ans = 0;
+    while (start <= end)
     {
-        int temp = 0;
-        for (int i = 0; i < v.size(); i++)
+        mid = (start + end) / 2;
+        unsigned int temp = 0;
+        for (unsigned int i = 0; i < v.size(); i++)
         {
             temp += v[i] / mid;
         }
         if (temp >= N)
         {
-            start = mid;
+            start = mid + 1;
+            if (ans < mid) {
+               ans = mid;
+            }
         }
         else
         {
-            end = mid;
+            end = mid - 1;
         }
-        mid = (start + end) / 2;
+      
     }
-    cout << mid;
+    cout << ans;
 }
