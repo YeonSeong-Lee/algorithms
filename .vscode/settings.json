@@ -70,7 +70,8 @@
     "vector": "cpp",
     "forward_list": "cpp",
     "initializer_list": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "tuple": "cpp"
   },
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.chat.terminalChatLocation": "chatView",
