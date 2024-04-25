@@ -28,14 +28,12 @@ int main()
     int mid = (start + end) / 2;
     while (start < mid)
     {
-        cout << "start " << start << " " << "mid " << mid << " end " << end << "\n";
         int temp = 0;
         for (int i = 0; i < v.size(); i++)
         {
             temp += v[i] / mid;
-            cout << "temp :" << temp << " v[i] / mid " << v[i] / mid << "\n";
         }
-        if (temp > N)
+        if (temp >= N)
         {
             start = mid;
         }
