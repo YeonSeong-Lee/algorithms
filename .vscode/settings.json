@@ -80,4 +80,5 @@
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "python.REPL.enableREPLSmartSend": false,
 }
