@@ -29,5 +29,5 @@ while q:
         q.append((ny, nx))
         visited[ny][nx] = visited[y][x] + 1
 
-print(visited[n][m])
+print(visited[n][m]) 
 
