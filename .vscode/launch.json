@@ -1,25 +1,10 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "(lldb) Launch macOS",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/a.out",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": true,
-      "MIMode": "lldb"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
-      "request": "launch",
-      "args": [],
-      "cwd": "/Users/yeonseong/algorithms",
-      "program": "/Users/yeonseong/algorithms/build/Debug/outDebug"
-    }
-  ]
+    "configurations": [
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}"
+        }
+    ]
 }
