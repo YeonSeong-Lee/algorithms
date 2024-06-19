@@ -18,6 +18,16 @@ def bfs(start):
     dir = [(-1, 0), (0, -1), (0, 1), (1, 0)]
     while q:
         dummy, y, x  = heapq.heappop(q)
+        if info[y][x] < size[0] and info[y][x] > 0:
+            size[1] += 1
+            ans += visited[y][x]
+            visited = [[-1] * n for _ in range(n)]
+            visited[y][x] = 0
+            q = []
+            info[y][x] = 0
+            if size[1] == size[0]:
+                size[0] += 1
+                size[1] = 0
         for v in dir:
             dy, dx = v
             ny, nx = y + dy, x + dx
@@ -29,18 +39,6 @@ def bfs(start):
                 continue
             visited[ny][nx] = visited[y][x] + 1
             heapq.heappush(q, (visited[ny][nx], ny, nx))
-            if info[ny][nx] < size[0] and info[ny][nx] > 0:
-                size[1] += 1
-                ans += visited[ny][nx]
-                visited = [[-1] * n for _ in range(n)]
-                visited[ny][nx] = 0
-                q = []
-                heapq.heappush(q, (visited[ny][nx], ny, nx))
-                if size[1] == size[0]:
-                    size[0] += 1
-                    size[1] = 0
-                info[ny][nx] = 0
-                break
     return ans
 
 
@@ -49,7 +47,7 @@ for _ in range(n):
     for i, e in enumerate(line):
         if e == 9:
             sharks = (_, i)
-            line[i] =
+            line[i] = 0
     info.append(line)
 
 print(bfs(sharks))
