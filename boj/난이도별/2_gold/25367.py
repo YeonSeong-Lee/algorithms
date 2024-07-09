@@ -29,3 +29,6 @@ for _ in range(n):
 #     print(0)
 #   else:
 #     print(2**(y.bit_count()))
+
+# 배운점
+# a ^ b = a + b - 2 * (a & b)
