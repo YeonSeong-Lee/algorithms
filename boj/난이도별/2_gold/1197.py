@@ -1,42 +1,41 @@
 import sys
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
-root = [i for i in range(n+1)]
-rank = [0 for _ in range(n+1)]
+v, e = map(int, input().split())
+root = [i for i in range(v+1)]
+rank = [0 for _ in range(v+1)]
 edges = []
-
-def find(x):
+def get_root(x):
   if root[x] == x:
     return x
   else:
-    root[x] = find(root[x])
+    root[x] = get_root(root[x])
     return root[x]
 
-def union(a, b):
-  x = find(a)
-  y = find(b)
-  if rank[x] < rank[y]:
-    root[x] = y
-  else:
+def union(x, y):
+  x = get_root(x)
+  y = get_root(y)
+  if x == y:
+    return
+  if rank[x] > rank[y]:
     root[y] = x
+  else:
+    root[x] = y
     if rank[x] == rank[y]:
       rank[x] += 1
-
-
-for _ in range(m):
+  
+for _ in range(e):
   a, b, c = map(int, input().split())
   edges.append((a, b, c))
 
 edges.sort(key=lambda x: x[2])
 
 ans = 0
-last = 0
 for a, b, c in edges:
-  if find(a) == find(b):
+  if get_root(a) == get_root(b):
     continue
   union(a, b)
   ans += c
-  last = c
 
-print(ans - last)
+print(ans)
+
