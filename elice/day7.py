@@ -4,37 +4,27 @@ input = sys.stdin.readline
 
 n, k = map(int, input().split())
 CASE = 1 << 10
-length = len(str(n))
-dp = [[sys.maxsize] * CASE for _ in range(length + 2)]
+length = 10
+dp = [[sys.maxsize] * CASE for _ in range(length + 1)]
 
-for i in range(1, 10):
-    dp[1][1 << i] = i
+if k == 10:
+    print("1023456789")
+    exit()
 
+if k == 9:
+    print("102345678")
+    exit()
 
-for i in range(2, length + 2):
-    for j in range(10):
-        for bit in range(CASE):
-            temp = dp[i - 1][bit]
-            if temp == sys.maxsize:
-                continue
-            temp = 10 * temp + j
-            if i == length and temp > n:
-                dp[i][bit | (1 << j)] = min(temp, dp[i][bit | (1 << j)])
-            else:
-                dp[i][bit | (1 << j)] = min(temp, dp[i][bit | (1 << j)])
+digit = [False] * 10
+cnt = 0
+while cnt != k:
+    digit = [False] * 10
+    cnt = 0
+    n = str(int(n) + 1)
+    for char in n:
+        digit[int(char)] = True
+    cnt = sum(digit)
+print(n)
 
-ans = sys.maxsize
-if n < int(length * '9'):
-    for i, e in enumerate(dp[length]):
-        if e == sys.maxsize:
-            continue
-        if bin(i).count("1") == k and e > n:
-            ans = min(ans, e)
-else:
-    for i, e in enumerate(dp[length+1]):
-        if e == sys.maxsize:
-            continue
-        if bin(i).count("1") == k and e > n:
-            ans = min(ans, e)
-
-print(ans if ans < sys.maxsize else -1)
+# 배운 점
+# 걍 생구현으로 통과가 되는지 확인사항 잘 확인해보기
