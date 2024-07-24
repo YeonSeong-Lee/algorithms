@@ -9,6 +9,7 @@ def solve():
     nums = [int(input()) for _ in range(n)]
     tree_size = 1 << (math.ceil(math.log2(n)) + 1)
     tree = [1] * tree_size
+    MOD = 1_000_000_007
 
     def init(node, start, end):
         if start == end:
@@ -16,7 +17,7 @@ def solve():
         else:
             init(node * 2, start, (start + end) // 2)
             init(node * 2 + 1, (start + end) // 2 + 1, end)
-            tree[node] = tree[2 * node] * tree[2 * node + 1]
+            tree[node] = (tree[2 * node] * tree[2 * node + 1]) % MOD
 
     def update(node, start, end, index, val):
         if index < start or index > end:
@@ -28,7 +29,7 @@ def solve():
         mid = (start + end) // 2
         update(node * 2, start, mid, index, val)
         update(node * 2 + 1, mid + 1, end, index, val)
-        tree[node] = tree[node * 2] * tree[node * 2 + 1]
+        tree[node] = (tree[node * 2] * tree[node * 2 + 1]) % MOD
 
     def query(node, start, end, left, right):
         if left > end or right < start:
@@ -37,8 +38,12 @@ def solve():
             return tree[node]
         mid = (start + end) // 2
         l_node = query(node * 2, start, mid, left, right)
-        r_node = query(node * 2 + 1, mid + 1, n - 1, left, right)
-        return l_node * r_node
+        if l_node == 0:
+            return 0
+        r_node = query(node * 2 + 1, mid + 1, end, left, right)
+        if r_node == 0:
+            return 0
+        return (l_node * r_node) % MOD
 
     init(1, 0, n - 1)
     for _ in range(m + k):
