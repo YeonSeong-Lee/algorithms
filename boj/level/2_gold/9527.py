@@ -1,4 +1,3 @@
-from math import remainder
 import sys
 
 input = sys.stdin.readline
