@@ -85,6 +85,7 @@
     "golomb",
     "popleft",
     "postorder",
-    "preorder"
+    "preorder",
+    "setrecursionlimit"
   ]
 }
