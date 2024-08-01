@@ -3,9 +3,17 @@
 		"prefix": "im",
 		"body": [
 			"import sys",
-			"input = sys.stdin.readline\n"
+			"input = sys.stdin.readline,\n"
 			"$1"
 		],
 		"description": "Read input from stdin"
+
+	},
+	"Map input to integers": {
+		"prefix": "mapint",
+		"body": [
+			"$1 = map(int, input().split())"
+		],
+		"description": "Map input to integers"
 	}
 }
