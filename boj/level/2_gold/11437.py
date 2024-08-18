@@ -1,5 +1,6 @@
 import sys
 from collections import defaultdict
+sys.setrecursionlimit(10**5)
 input = sys.stdin.readline
 
 graph = defaultdict(list)
@@ -36,3 +37,6 @@ for _ in range(m):
         a = parent[a]
         b = parent[b]
     print(b)
+
+# LEARN
+# 최소공통조상 찾기 기본적인 알고리즘
