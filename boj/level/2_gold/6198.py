@@ -17,3 +17,6 @@ for e in cows:
     ans += len(stack)
     stack.append(e)
 print(ans) 
+
+# LEARN
+# 어떤 수를 셀 때는 기준을 바꾸어서 셀 수 있는지 생각해보기.
