@@ -19,3 +19,5 @@ for e in nums:
         exit()
 
 print("YES")
+
+# 그리디 문제
