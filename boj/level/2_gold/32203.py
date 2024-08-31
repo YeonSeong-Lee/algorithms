@@ -1,10 +1,9 @@
 import sys
-from collections import defaultdict
 from itertools import combinations
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-graph = defaultdict(list)
+graph = [[] for _ in range(n + 1)]
 c = list(map(int, input().split()))
 
 for i, e in enumerate(c):
