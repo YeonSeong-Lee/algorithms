@@ -27,7 +27,7 @@ def detect_collision(i, j):
         return True
     if j == 0 or j == n + 1:
         return True
-    if (i, j) in snake and snake[-1] != (i, j):
+    if (i, j) in snake:
         return True
     return False
 
@@ -35,12 +35,12 @@ cnt = 0
 i, j = 1, 1
 snake.append((i, j))
 while True:
-    if detect_collision(i, j):
-        print(cnt)
-        exit()
     cnt += 1
     dy, dx = dir
     i, j = i + dy, j + dx
+    if detect_collision(i, j):
+        print(cnt)
+        exit()
     if (i, j) in snake:
         print(cnt)
         exit()
