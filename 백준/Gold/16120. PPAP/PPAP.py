@@ -1,14 +1,38 @@
-def is_ppap_string(s):
-    stack = []
-    for char in s:
-        stack.append(char)
-        if len(stack) >= 4 and stack[-4:] == ['P', 'P', 'A', 'P']:
-            stack[-4:] = ['P']
+import sys
+input = sys.stdin.readline
 
-    if stack == ['P']:
-        return "PPAP"
-    else:
-        return "NP"
+ppap = input().strip()
+stack = []
+flag = False
 
-s = input().strip()
-print(is_ppap_string(s))
+if len(ppap) == 1 and ppap[0] == 'P':
+    print("PPAP")
+    exit()
+
+if len(ppap) == 2 or 'A' not in ppap:
+    print("NP")
+    exit()
+
+for e in ppap:
+    if flag == True and e == 'P':
+        flag = False
+    if flag == True and e == 'A':
+        print("NP")
+        exit()
+    stack.append(e)
+    if stack[-1] == 'A':
+        if len(stack) <= 2:
+            print("NP")
+            exit()
+        flag = True
+        stack.pop()  # A삭제
+        temp1 = stack.pop()
+        temp2 = stack.pop()
+        if temp1 != 'P' or temp2 != 'P':
+            print("NP")
+            exit()
+
+if flag or stack[-1] == 'A' or len(stack) > 2:
+    print("NP")
+else:
+    print("PPAP")
