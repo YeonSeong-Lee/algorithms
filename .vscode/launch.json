@@ -5,6 +5,12 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${file}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "node debug",
+            "program": "${workspaceFolder}/softeer/355932.js"
         }
     ]
 }
